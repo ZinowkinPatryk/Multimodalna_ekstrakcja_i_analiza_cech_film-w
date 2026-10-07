@@ -1,0 +1,28 @@
+Najważniejsze kroki do wykonania tego projektu (o ile dobrze go rozumiem)
+
+1. Przygotowanie danych, mamy zbior maks 1000 danych z plakatami
+   takze mysle ze dobre bedzie przeprowadzenia malego badania w celu zobaczenia
+   jaka roznice robi zestaw 500, 750 i 1000 danych czy cos da sie zauwazyc
+
+2. Przygotowanie klasy do przetwarzania plakatow tam trzeba tych gotowych sieci
+   konwolucyjnych uzyc (CNN) ktora jest juz w bibliotekach wiec malo roboty
+
+3. Przygotowanie klasy do przetwarzania opisow i tego co mamy na liczby.
+   Wykorzystac mozemy dowolny model NLP z biblioteki stikit-learn.
+
+4. Z obu tych klas uzyskujemy wektory ktore trzeba polaczyc w jeden
+   najlepiej by bylo to po prostu funkcja w osobnym pliku dla zachowania
+   czystosci kodu
+
+5. Utworzenie klasyfikatora, po prostu trenujemy klasyfikator na tych danych
+   a i wlasnie zdalem sobie sprawe ze nie mozemy uzyc 1000 bo musimy miec osobne
+   dane na testu wiec 1000 odpada chyba ze znajdzemieny inna baze przykladow osobna
+   to wtedy tak. Tu dowolnosc jezeli chodzi o trenowanie modelu mozemy z obu bibliotek skorzystac
+
+6. Pozniej utworzenie profilu uzytkownika z gory i bierzemy filmy (20 przykladow) ktore nie byly
+   wczesniej w trenowaniu wyliczmy te dopasowanie, sprawdzamy podobienstwo cosinusowe wektorow
+   w celu ocenienia dopasowania i glownym celem jest uzyskanie informacji czy model faktycznie
+   poprawnie klasyfikuje filmy (czyli jak osoba w profilu ma ze nie lubi filmow romantycznych to
+   mu tego nie wybierze tego).
+
+
