@@ -7,26 +7,25 @@ We will test the three variant of data size:
 The reason of this changing data size is to verify and check
 that this small different will be noticeable.
 """
-import os
 import pandas as pd
 from pathlib import Path
 
 class DataLoader:
-    def __init__(self, data_path, data_size):
+    def __init__(self, data_path: str, data_size: int):
         self.data_size = data_size
         self.data_path = data_path
         self._images_path = {}
         self._labels_info = {}
 
-    def load_data(self):
-        if os.path.exists(self.data_path):
+    def load_data(self) -> None:
+        if self.verify_path(self.data_path):
             print("loading data...")
             data = pd.read_csv(self.data_path)
             self._split_data(data)
         else:
             raise FileNotFoundError("The filepath does not exist")
 
-    def _split_data(self, data):
+    def _split_data(self, data: pd.DataFrame) -> None:
         image_path = Path(self.data_path).parent
         image_path = image_path / "IMDB four_genre_posters"
         print("splitting data...")
@@ -41,25 +40,20 @@ class DataLoader:
                 counter += 1
 
     @staticmethod
-    def verify_path(path):
-        if os.path.exists(path):
-            return True
-        else:
-            return False
+    def verify_path(path : str) -> bool:
+        return Path(path).exists()
 
-    def get_images_path(self):
+    @property
+    def images_path(self) -> dict[int, Path]:
         return self._images_path
 
-    def get_labels_info(self):
+    @property
+    def labels_info(self) -> dict[int, list]:
         return self._labels_info
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (f"<DataLoader: size={self.data_size}, loaded_items={len(self._images_path)}, path='{self.data_path}\n"
-                f"images_path_size={len(self._images_path.keys())}, labels_path_size={len(self._labels_info.keys())}'>")
-
-    def __del__(self):
-        del self._images_path
-        del self._labels_info
+                f"images_path_size={len(self._images_path)}, labels_path_size={len(self._labels_info)}'>")
 
 
 if __name__ == "__main__":
