@@ -27,7 +27,7 @@ class VisionFeatureExtractor:
 
 if __name__ == "__main__":
     data_manager = DataLoader(
-        data_path=r"/Volumes/X9 Pro/Projekt systemy obliczen inteligetnych/Multimodalna_ekstrakcja_i_analiza_cech_film-w/dataset/raw/IMDB_four_genre_larger_plot_description.csv",
+        data_path= r"C:\Users\patry\Desktop\projekt_systemy_obliczen_inteligentych\projekt1_cechy\Multimodalna_ekstrakcja_i_analiza_cech_film-w\dataset\raw\IMDB_four_genre_larger_plot_description.csv",
         data_size=600)
     data_manager.load_data()
     extractor = VisionFeatureExtractor(data_manager.images_path)

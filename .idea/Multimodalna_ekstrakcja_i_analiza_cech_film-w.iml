@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.13 (Multimodalna_ekstrakcja_i_analiza_cech_film-w) (4)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.13 (Multimodalna_ekstrakcja_i_analiza_cech_film-w)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

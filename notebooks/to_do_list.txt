@@ -12,7 +12,7 @@ Najważniejsze kroki do wykonania tego projektu (o ile dobrze go rozumiem)
 
 4. Z obu tych klas uzyskujemy wektory ktore trzeba polaczyc w jeden
    najlepiej by bylo to po prostu funkcja w osobnym pliku dla zachowania
-   czystosci kodu
+   czystosci kodu CHODZ nwm czy nie lepiej klase zawierajaca oba wywolania dla textu i obrazu
 
 5. Utworzenie klasyfikatora, po prostu trenujemy klasyfikator na tych danych
    a i wlasnie zdalem sobie sprawe ze nie mozemy uzyc 1000 bo musimy miec osobne
@@ -28,3 +28,5 @@ Najważniejsze kroki do wykonania tego projektu (o ile dobrze go rozumiem)
 
 
 PUNKT 1. ZROBIONY
+PUNKT 2. ZROBIONY
+PUNKT 3. ZRIOBIONY
