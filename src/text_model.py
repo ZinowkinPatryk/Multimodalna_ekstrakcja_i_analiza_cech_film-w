@@ -11,7 +11,7 @@ class TextFeatureExtractor:
             texts.append(desc)
         self.vectorizer.fit(texts)
 
-    def extract_feature(self):
+    def extract_features(self):
         features = {}
         for index, info in self.label_info.items():
             desc = str(info[0] if isinstance(info, list) else str(info["desc"]))
@@ -27,5 +27,5 @@ if __name__ == "__main__":
     )
     data_manager.load_data()
     text_extractor = TextFeatureExtractor(data_manager.labels_info)
-    text_results = text_extractor.extract_feature()
+    text_results = text_extractor.extract_features()
     print(text_results)
