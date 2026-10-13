@@ -14,3 +14,11 @@ uzyskanych wyników.
 # Wykorzystywane zbiory danych: 
 ## MM-IMDb — Multimodal IMDb Dataset
 * IMDB Multimodal Vision & NLP Genre Classification (Kaggle) 
+
+
+#Wymagania:
+tensorflow==2.21.0
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+Pillow==12.3.0
