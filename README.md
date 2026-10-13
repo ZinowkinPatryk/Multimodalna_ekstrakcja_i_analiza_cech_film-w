@@ -17,6 +17,8 @@ uzyskanych wyników.
 
 
 Wymagania:
+
+
 tensorflow==2.21.0
 numpy==2.5.3
 pandas==3.0.6
