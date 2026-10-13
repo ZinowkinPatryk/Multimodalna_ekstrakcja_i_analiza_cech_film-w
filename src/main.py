@@ -3,10 +3,7 @@ from fusion import ProfileAnalyzer
 
 
 if __name__ == "__main__":
-    data_manager = DataLoader(
-        data_path=r"C:\Users\patry\Desktop\projekt_systemy_obliczen_inteligentych\projekt1_cechy\Multimodalna_ekstrakcja_i_analiza_cech_film-w\dataset\raw\IMDB_four_genre_larger_plot_description.csv",
-        data_size=200
-    )
+    data_manager = DataLoader(data_size=200)
     data_manager.load_data()
     analyzer = ProfileAnalyzer(data_manager.images_path, data_manager.labels_info)
     analyzer.fusion_vectors()
