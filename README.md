@@ -16,9 +16,10 @@ uzyskanych wyników.
 * IMDB Multimodal Vision & NLP Genre Classification (Kaggle) 
 
 
-#Wymagania:
+Wymagania:
 tensorflow==2.21.0
 numpy==2.5.3
 pandas==3.0.6
 scikit-learn==1.9.1
 Pillow==12.3.0
+Python==3.13
