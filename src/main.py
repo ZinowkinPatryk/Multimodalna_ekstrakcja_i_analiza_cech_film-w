@@ -7,7 +7,6 @@ if __name__ == "__main__":
     data_manager.load_data()
     analyzer = ProfileAnalyzer(data_manager.images_path, data_manager.labels_info)
     analyzer.fusion_vectors()
-
     my_profile = {
         "action": 1.0,
         "Comedy": 0.5,

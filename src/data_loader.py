@@ -1,18 +1,13 @@
-"""
-Dataset loader,
-We will test the three variant of data size:
-1 - 500
-2 - 750
-3 - 1000
-The reason of this changing data size is to verify and check
-that this small different will be noticeable.
-"""
+
 import sys
 import pandas as pd
 from pathlib import Path
 from datasets import load_dataset
 
 class DataLoader:
+    """
+    Klasa data loader
+    """
     def __init__(self, data_size: int):
         self.data_size = data_size
         self.data_path = None
@@ -22,6 +17,9 @@ class DataLoader:
         self._labels_info = {}
 
     def load_data(self) -> None:
+        """
+        Glowna funckja do wczytania danych, odpowiada za sterowanie innych funkcji na bazie parametrow
+        """
         if len(sys.argv) <= 2:
             raise FileNotFoundError("System require a arguments (two of them)")
         match sys.argv[1]:
@@ -45,6 +43,9 @@ class DataLoader:
 
 
     def _split_data(self, data: pd.DataFrame) -> None:
+        """
+        "Prywatna" funckja do splitowania danych na bazie sciezki do pliku lokalnego
+        """
         image_path = Path(self.data_path).parent
         image_path = image_path / "IMDB four_genre_posters"
         print("splitting data...")
@@ -59,6 +60,9 @@ class DataLoader:
                 counter += 1
 
     def _process_hf_data(self, dataset)->None:
+        """
+        "Prywatna" funkcja do obrabiania danych pobranych z huggingface
+        """
         counter = 0
         for item in dataset:
             if counter >= self.data_size:
@@ -85,16 +89,28 @@ class DataLoader:
 
     @staticmethod
     def verify_path(path : str) -> bool:
+        """
+        Statyczna funckja do weryfikacji czy podana sciezka istnieje
+        """
         return Path(path).exists()
 
     @property
     def images_path(self) -> dict[int, Path]:
+        """
+        Getter slownika z posterami
+        """
         return self._images_path
 
     @property
     def labels_info(self) -> dict[int, list]:
+        """
+        Getter slownika z pozostalymi opisami
+        """
         return self._labels_info
 
     def __repr__(self) -> str:
+        """
+        Magiczna funkcja do wyswietlania obecnej reprezentacji/zawartosci obiektu
+        """
         return (f"<DataLoader: size={self.data_size}, loaded_items={len(self._images_path)}, path='{self.data_path}\n"
                 f"images_path_size={len(self._images_path)}, labels_path_size={len(self._labels_info)}'>")

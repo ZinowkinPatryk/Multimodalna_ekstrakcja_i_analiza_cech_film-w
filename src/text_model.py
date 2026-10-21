@@ -2,7 +2,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from data_loader import DataLoader
 
 class TextFeatureExtractor:
+    """
+    Klasa do pozyskanai cech z tekstu
+    """
     def __init__(self, label_info: dict, max_vocab_size=10000):
+        """
+        Inicjalizacja modelu TfidfVectorizer
+        """
         self.label_info = label_info
         self.vectorizer = TfidfVectorizer(max_features=max_vocab_size)
         texts = []
@@ -12,6 +18,9 @@ class TextFeatureExtractor:
         self.vectorizer.fit(texts)
 
     def extract_features(self):
+        """
+        Przepuszczenie danych przez model z uzyskaniem wektora cech
+        """
         features = {}
         for index, info in self.label_info.items():
             desc = str(info[0] if isinstance(info, list) else str(info["desc"]))

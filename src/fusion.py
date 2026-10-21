@@ -4,6 +4,9 @@ from vision_model import VisionFeatureExtractor
 from sklearn.metrics.pairwise import cosine_similarity
 
 class ProfileAnalyzer:
+    """
+    Klasa do analizu profilu
+    """
     def __init__(self, images_path: dict, labels_info: dict) -> None:
         self._images_path = images_path
         self._labels_info = labels_info
@@ -13,6 +16,9 @@ class ProfileAnalyzer:
         self.user_profile_vector = None
 
     def _create_vectors(self) -> tuple:
+        """
+        Uruchamianie i uzyskiwanie wektorow cech z modelow wizyjnego i tekstowego
+        """
         self._text_model = TextFeatureExtractor(label_info=self._labels_info)
         self._vision_model = VisionFeatureExtractor(images_path=self._images_path)
         text_vector = self._text_model.extract_features()
@@ -20,6 +26,9 @@ class ProfileAnalyzer:
         return text_vector, vision_vector
 
     def fusion_vectors(self) -> dict:
+        """
+        Laczenie obu wektorow cech w jeden
+        """
         text_vector, vision_vector = self._create_vectors()
         for index in self._labels_info.keys():
             if index in text_vector and index in vision_vector:
@@ -27,6 +36,12 @@ class ProfileAnalyzer:
         return self.fused_vectors
 
     def build_user_profile(self, profile_weights: dict):
+        """
+            Tworzy referencyjny wektor profilu użytkownika na podstawie podanych wag.
+            Wyszukuje w bazie filmy o preferowanych gatunkach, mnoży ich wektory
+            multimodalne (obraz+tekst) przez zadaną wagę (np. 'action': 1.0), a na koniec
+            uśrednia je do jednego wektora. Ten wektor to matematyczny wzorzec gustu użytkownika.
+        """
         weighted_vectors = []
         for index, info in self._labels_info.items():
             genre = str(info[1])
@@ -39,6 +54,9 @@ class ProfileAnalyzer:
         self.user_profile_vector = np.mean(weighted_vectors, axis=0)
 
     def calculate_similarity(self, top_n=5):
+        """
+         Wyliczanie podobienstwa cosinusowego wraz z poszukiwaniem najlepszego dopasowania
+        """
         if self.user_profile_vector is None:
             raise RuntimeError("No user profile found")
         recommendations = []

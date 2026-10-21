@@ -8,12 +8,21 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 class VisionFeatureExtractor:
+    """
+     Klasa do wyciagniecia cech z posterow
+    """
     def __init__(self, images_path: dict):
+        """
+        Inicjalizacja modelu
+        """
         self.images_path = images_path
         self.model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
         self.target_size = (224, 224)
 
     def extract_features(self) -> dict:
+        """
+         Przepuszczanie danych przez model z uzyskaniem wektorow cech
+        """
         features = {}
         for index, image_path in self.images_path.items():
             img = load_img(image_path, target_size=self.target_size)
